@@ -1,0 +1,18 @@
+version: '2'
+services:
+  plex:
+    restart: unless-stopped
+    image: sashgorokhov/plex
+    volumes:
+      - "/mnt/plex:/usr/sbin/plexmediaserver"
+      - "/mnt/media:/media"
+    ports:
+      - "32400:32400"
+  deluge:
+    restart: unless-stopped
+    image: sashgorokhov/deluge
+    ports:
+      - "8112:8112"
+      - "127.0.0.1:58846:58846"
+    volumes:
+      - "/mnt/media:/media"
