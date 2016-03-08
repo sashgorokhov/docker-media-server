@@ -16,3 +16,13 @@ services:
       - "127.0.0.1:58846:58846"
     volumes:
       - "/mnt/media:/media"
+  webdav:
+    restart: unless-stopped
+    image: sashgorokhov/webdav
+    ports:
+      - "8080:80"
+    volumes:
+      - "/mnt/media:/media"
+    environment:
+      USERNAME:
+      PASSWORD:
