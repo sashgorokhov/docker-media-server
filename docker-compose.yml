@@ -3,11 +3,12 @@ services:
   plex:
     restart: unless-stopped
     image: sashgorokhov/plex
+    network_mode: "host"
     volumes:
       - "/mnt/plex:/usr/sbin/plexmediaserver"
       - "/mnt/media:/media"
     ports:
-      - "32400:32400"
+      - "0.0.0.0:32400:32400"
   deluge:
     restart: unless-stopped
     image: sashgorokhov/deluge
